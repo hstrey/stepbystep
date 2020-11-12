@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Gait Data List{% endblock title %}
+
+{% block content %}
+
+{% for data in all_gaitdata_list %}
+  <div class="post-entry">
+    <h2><a href="{% url 'gait_graph' data.pk %}"> {{data.created_date}}</a></h2>
+  </div>
+{% endfor %}
+
+{% endblock content %}

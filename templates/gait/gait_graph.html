@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+
+{% block myscript %}
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js"
+        crossorigin="anonymous"></script>
+    {{ script | safe }}
+{% endblock %}
+
+{% block title %}Gait Data List{% endblock title %}
+
+{% block content %}
+
+<div class=page>
+      {{ div | safe }}
+</div>
+
+{% endblock content %}
