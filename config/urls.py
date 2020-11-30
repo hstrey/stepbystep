@@ -6,6 +6,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', include('pages.urls')),
+    path('gait/',include('gait.urls')),
+    path('restapi/',include('restapi.urls')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
 if settings.DEBUG:

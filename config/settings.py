@@ -34,11 +34,13 @@ INSTALLED_APPS = [
     'allauth.account',
     'crispy_forms',
     'debug_toolbar',
+    'rest_framework',
 
     # Local
     'accounts',
     'pages',
     'gait',
+    'restapi',
 ]
 
 # MIDDLEWARE
@@ -185,3 +187,11 @@ ACCOUNT_UNIQUE_EMAIL = True
 # django-debug-toolbar
 hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
 INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
