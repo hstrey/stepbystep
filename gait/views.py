@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from django.shortcuts import render,get_object_or_404, redirect
+=======
+from django.shortcuts import render, get_object_or_404
+>>>>>>> 03b0988e795f2531c0bf32446c79be6189042d71
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
 import json
@@ -22,6 +26,7 @@ class GaitListView(ListView):
 
 def gaitGraphView(request,pk):
     if request.user.is_authenticated:
+<<<<<<< HEAD
         # Do something for authenticated users.
         print("authenticated")
         data = get_object_or_404(Gaitdata, pk=pk)
@@ -37,3 +42,17 @@ def gaitGraphView(request,pk):
     context = {'script':script, 'div':div}
 
     return render(request, 'gait/gait_graph.html', context)
+=======
+        data = get_object_or_404(Gaitdata, pk=pk)
+        data_dict = json.loads(data.data_json)
+        data_list = data_dict['data']
+        t_data = np.arange(len(data_list))/200.0
+        plot = figure(title=str(data.created_date),x_axis_label='time')
+        plot.line(t_data,data_list)
+        script, div = components(plot)
+        context = {'script': script,'div':div}
+    else:
+        context = {'script':"","div":""}
+    return render(request, 'gait/gait_graph.html', context)
+
+>>>>>>> 03b0988e795f2531c0bf32446c79be6189042d71
