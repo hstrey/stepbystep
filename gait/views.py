@@ -26,8 +26,10 @@ def gaitGraphView(request,pk):
         data_dict = json.loads(data.data_json)
         data_list = data_dict['data']
         t_data = np.arange(len(data_list))/200.0
-        plot = figure(title=str(data.created_date),x_axis_label='time')
+        plot = figure(title=str(data.created_date),x_axis_label='time',toolbar_location=None)
         plot.line(t_data,data_list)
+        plot.outline_line_color = None
+        plot.background_fill_color = "#efefef"
         script, div = components(plot)
         context = {'script': script,'div':div}
     else:
